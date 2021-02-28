@@ -61,7 +61,7 @@ class App extends Component {
       letter = " ";
     }
     this.setState({currentWord: this.state.currentWord.concat(letter)});
-    // this.state.interval *= 0.6;
+    this.state.interval *= 0.6;
   }
 
   clearLetters() {
