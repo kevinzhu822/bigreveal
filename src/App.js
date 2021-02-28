@@ -28,7 +28,7 @@ class App extends Component {
     this.inputBox = this.createInputBox();
     return(
     <div className="App">
-      <h1 className="Header">Enter Your Name to Get Your Big</h1>
+      <h1 className="Header">Enter Your First Name</h1>
       <div className="Letters">
         { this.renderedLetters }
       </div>
@@ -70,9 +70,6 @@ class App extends Component {
 
   onSubmit(){
     switch(this.state.currentWord) {
-      case "":
-        window.location.assign("google.com");
-        break;
       case "STEVEN":
         window.location.assign("https://open.spotify.com/playlist/5DDeGV79ACpD0eDFb4w1CT?si=jsvTL8WeSs2Xb7kM57p9Vw");
         break;
@@ -115,7 +112,10 @@ class App extends Component {
       case "KENNEDY":
         window.location.assign("https://open.spotify.com/playlist/1YYO1xI6EKxPw3JYaSmphB?si=yP5jaBGfQoiz2DxX3Pi8Mw");
         break;
-  }
+      default:
+        window.location.assign("https://open.spotify.com/playlist/1rffTLjDq3Oepbe1amPgzM?si=I5fn06nlTe-bphlHLat5Pw");
+        break;
+      }
 }
  
   annoyingUpdate() {
