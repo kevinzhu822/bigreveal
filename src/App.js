@@ -40,17 +40,16 @@ class App extends Component {
   };
 
   createInputBox(){
-    console.log(this.state.currentWord);
     var inputBox = 
     <div>
     <div className="BoxAndButton">
       <form>
         <input type="text" value={this.state.currentWord}/>
       </form>
-    <button onClick={this.onSubmit}>Submit</button>
+    <button variant="primary" onClick={this.onSubmit}>Submit</button>
     </div>
-    <button className="MyButton" onClick={this.addLetter}>Add Letter</button>
-    <button className="MyButton" onClick={this.clearLetters}>Clear</button>
+    <button variant="primary" className="MyButton" onClick={this.addLetter}>Add Letter</button>
+    <button variant="outline-primary" className="MyButton" onClick={this.clearLetters}>Clear</button>
     </div>
     return inputBox;
   }
@@ -61,7 +60,7 @@ class App extends Component {
       letter = " ";
     }
     this.setState({currentWord: this.state.currentWord.concat(letter)});
-    this.state.interval *= 0.6;
+    this.state.interval *= 0.73;
   }
 
   clearLetters() {
