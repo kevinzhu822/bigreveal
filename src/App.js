@@ -9,6 +9,7 @@ class App extends Component {
       interval: 500,
       currentWord: "",
       url: "",
+      timesCleared: 0,
     };
 
     this.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ␣";
@@ -60,11 +61,19 @@ class App extends Component {
       letter = " ";
     }
     this.setState({currentWord: this.state.currentWord.concat(letter)});
-    this.state.interval *= 0.73;
+    if (this.state.timesCleared < 4) {
+      this.state.interval *= 0.65;
+    } else {
+      this.setState({interval: 300});
+    }
   }
 
   clearLetters() {
-    this.setState({currentWord: "", interval: 500});
+    this.setState({currentWord: "", interval: 500, timesCleared: this.state.timesCleared+1});
+    console.log(this.state.timesCleared);
+    if (this.state.timesCleared == 4) {
+      alert("Seems like you're having trouble so speedup has been disabled.");
+    }
   }
 
   onSubmit(){
