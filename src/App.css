@@ -15,14 +15,14 @@
 .Letter {
   font-size: 20px;
   color: black;
-  padding: 3px;
+  padding: 0.5px;
 }
 
 .Highlighted {
   font-size: 20px;
   color: black;
   font-weight: bolder;
-  padding: 3px;
+  padding: 0.5px;
 
 }
 
