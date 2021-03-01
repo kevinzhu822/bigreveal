@@ -61,8 +61,8 @@ class App extends Component {
       letter = " ";
     }
     this.setState({currentWord: this.state.currentWord.concat(letter)});
-    if (this.state.timesCleared < 4) {
-      this.state.interval *= 0.65;
+    if (this.state.timesCleared < 9) {
+      this.state.interval *= 0.6;
     } else {
       this.setState({interval: 300});
     }
@@ -71,7 +71,7 @@ class App extends Component {
   clearLetters() {
     this.setState({currentWord: "", interval: 500, timesCleared: this.state.timesCleared+1});
     console.log(this.state.timesCleared);
-    if (this.state.timesCleared == 4) {
+    if (this.state.timesCleared == 9) {
       alert("Seems like you're having trouble so speedup has been disabled.");
     }
   }
