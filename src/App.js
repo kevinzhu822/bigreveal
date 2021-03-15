@@ -79,7 +79,7 @@ class App extends Component {
   onSubmit(){
     switch(this.state.currentWord) {
       case "CODEBASE":
-        window.location.assign("https://crosswordlabs.com/view/msd-19");
+        window.location.assign("https://docs.google.com/document/d/1X_znDjIBCfydSaFK5t_7S1EMF-WqQkdj0qd88gLspls/edit?usp=sharing");
         break;
       default:
         window.location.assign("https://open.spotify.com/playlist/0WAgRPxOveAZrqgqlPDqAB?si=F30uCbUcRMSE82Iz3M6MSA");
