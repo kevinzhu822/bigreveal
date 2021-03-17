@@ -10,6 +10,7 @@ class App extends Component {
       currentWord: "",
       url: "",
       timesCleared: 0,
+      timesAddLetter: 0,
     };
 
     this.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ␣";
@@ -60,7 +61,7 @@ class App extends Component {
     if (letter === "␣") {
       letter = " ";
     }
-    this.setState({currentWord: this.state.currentWord.concat(letter)});
+    this.setState({currentWord: this.state.currentWord.concat(letter), timesAddLetter: this.state.timesAddLetter + 1});
     if (this.state.timesCleared < 9) {
       this.state.interval *= 0.6;
     } else {
@@ -69,7 +70,7 @@ class App extends Component {
   }
 
   clearLetters() {
-    this.setState({currentWord: "", interval: 500, timesCleared: this.state.timesCleared+1});
+    this.setState({currentWord: "", interval: 500, timesCleared: this.state.timesCleared+1, timesAddLetter: 0});
     console.log(this.state.timesCleared);
     if (this.state.timesCleared == 9) {
       alert("Seems like you're having trouble so speedup has been disabled.");
@@ -77,14 +78,19 @@ class App extends Component {
   }
 
   onSubmit(){
-    switch(this.state.currentWord) {
-      case "CODEBASE":
-        window.location.assign("https://docs.google.com/document/d/1X_znDjIBCfydSaFK5t_7S1EMF-WqQkdj0qd88gLspls/edit?usp=sharing");
-        break;
-      default:
-        window.location.assign("https://open.spotify.com/playlist/0WAgRPxOveAZrqgqlPDqAB?si=F30uCbUcRMSE82Iz3M6MSA");
-        break;
+	
+  switch(this.state.currentWord) {
+    case "CODEBASE":
+      if (this.state.timesAddLetter != 8) {
+        window.location.assign("https://open.spotify.com/playlist/1PhSQUY0Q1mqThHv7jMtnp?si=ZlbGR0r_REma0gug0zLC-g");
+        return;
       }
+      window.location.assign("https://docs.google.com/document/d/1X_znDjIBCfydSaFK5t_7S1EMF-WqQkdj0qd88gLspls/edit?usp=sharing");
+      break;
+    default:
+      window.location.assign("https://open.spotify.com/playlist/0WAgRPxOveAZrqgqlPDqAB?si=F30uCbUcRMSE82Iz3M6MSA");
+      break;
+    }
 }
  
   annoyingUpdate() {
