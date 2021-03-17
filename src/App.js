@@ -11,6 +11,8 @@ class App extends Component {
       url: "",
       timesCleared: 0,
       timesAddLetter: 0,
+      tries: 0,
+      poop: false,
     };
 
     this.letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ␣";
@@ -61,9 +63,9 @@ class App extends Component {
     if (letter === "␣") {
       letter = " ";
     }
-    this.setState({currentWord: this.state.currentWord.concat(letter), timesAddLetter: this.state.timesAddLetter + 1});
-    if (this.state.timesCleared < 9) {
-      this.state.interval *= 0.6;
+    this.setState({currentWord: this.state.currentWord.concat(letter), timesAddLetter: this.state.timesAddLetter + 1, tries: this.state.tries + 1});
+    if (!this.state.poop) {
+      this.state.interval *= 0.8;
     } else {
       this.setState({interval: 300});
     }
@@ -71,9 +73,11 @@ class App extends Component {
 
   clearLetters() {
     this.setState({currentWord: "", interval: 500, timesCleared: this.state.timesCleared+1, timesAddLetter: 0});
-    console.log(this.state.timesCleared);
-    if (this.state.timesCleared == 9) {
-      alert("Seems like you're having trouble so speedup has been disabled.");
+    if (this.state.timesCleared > 9 && this.state.tries == 0) {
+      alert("hehe nice try disabling the speedup.");
+    } else if (this.state.timesCleared > 9 && this.state.tries > 20) {
+      alert("okok sorry if this was too hard. speedup has been disabled.");
+      this.setState({poop: true});
     }
   }
 
